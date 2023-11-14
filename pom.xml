@@ -45,6 +45,7 @@
 							<headerType>console</headerType>
 							<outfile>target/pdfcleaner.exe</outfile>
 							<jar>target/pdf-cleaner.jar</jar>
+							<icon>target/classes/file-pdf-icon_34434.ico</icon>
 							<classPath>
 								<mainClass>net.marioosh.pdfcleaner.Cleaner</mainClass>
 								<addDependencies>false</addDependencies>
