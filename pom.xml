@@ -32,6 +32,32 @@
 					<appendAssemblyId>false</appendAssemblyId>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>com.akathist.maven.plugins.launch4j</groupId>
+				<artifactId>launch4j-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>launch4j</goal>
+						</goals>
+						<configuration>
+							<headerType>console</headerType>
+							<outfile>target/pdfcleaner.exe</outfile>
+							<jar>target/pdf-cleaner.jar</jar>
+							<classPath>
+								<mainClass>net.marioosh.pdfcleaner.Cleaner</mainClass>
+								<addDependencies>false</addDependencies>
+								<preCp>anything</preCp>
+							</classPath>
+							<jre>
+								<path>C:\\Program File\\Java\\jre1.8.0_181</path>
+								<minVersion>1.7.0</minVersion>
+							</jre>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -66,6 +92,6 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.24</version>
 			<optional>true</optional>
-		</dependency>		
+		</dependency>
 	</dependencies>
 </project>
