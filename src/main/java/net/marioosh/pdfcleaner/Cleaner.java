@@ -1,5 +1,6 @@
 package net.marioosh.pdfcleaner;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.cli.CommandLine;
@@ -16,16 +17,26 @@ import com.itextpdf.pdfcleanup.PdfCleaner;
 import com.itextpdf.pdfcleanup.autosweep.CompositeCleanupStrategy;
 import com.itextpdf.pdfcleanup.autosweep.RegexBasedCleanupStrategy;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class Cleaner {
 
 	public Cleaner(String pdf, String out, String text) {
-		try (PdfReader reader = new PdfReader(pdf); 
-			 PdfWriter writer = new PdfWriter(out);) 
+		File inPdf = new File(pdf);
+		File outPdf = new File(out);
+		
+		log.info("in: {}", inPdf);
+		log.info("out: {}", outPdf);
+		
+		try (PdfReader reader = new PdfReader(inPdf); 
+			 PdfWriter writer = new PdfWriter(outPdf);) 
 		{
 			PdfDocument pdfDocument = new PdfDocument(reader, writer);
 			replaceText(pdfDocument, text);
 			pdfDocument.close();
-
+			
+			log.info("Done");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
